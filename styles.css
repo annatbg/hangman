@@ -1,18 +1,62 @@
 .gameWrapper {
   height: 100vh;
-  width: 100vw;
-  border: solid 2px red;
+  width: 80%;
+  /* border: solid 2px rgb(255, 179, 0); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 
 .keyboardArea {
-  height: 10rem;
-  width: 100%;
-  border: solid 2px orange;
+  height: 8rem;
+  width: 90%;
+  border: solid 2px whitesmoke;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
+
 .keyArea {
-  width: 5rem;
-  height: 5rem;
-  background-color: beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: solid 1px black;
+  background-color: white;
+  font-size: 2rem;
+  color: white;
+}
+
+.startButton {
+  margin-top: 2rem;
+  background-color: whitesmoke;
+  border: solid 1px grey;
+  height: 1rem;
+  padding: 1rem;
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.about {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.guessedLetters {
+  font-size: 2rem;
+  background-color: rgb(176, 176, 176);
+  width: 30rem;
+  height: 10rem;
+  border-radius: 1rem;
 }
