@@ -249,31 +249,21 @@ for (let part of hangmanArray) {
 }
 
 // funktioner
-
 function getRandomWord() {
   let randomIndex = Math.floor(Math.random() * wordArray.length);
   return wordArray[randomIndex];
 }
-console.log(randomWord);
 
-// create card area
-
-function createCardArea() {}
-for (let i = 0; i < randomWord.length; i++) {
-  keyArea = document.createElement("div");
-
-  keyArea.className = "keyArea";
-
-  keyArea.textContent = randomWord[i];
-  keyboardArea.appendChild(keyArea);
-  keyAreas.push(keyArea);
+function createCardArea() {
+  let randomWord = getRandomWord()
+  for (let i = 0; i < randomWord.length; i++) {
+    keyArea = document.createElement("div");
+    keyArea.className = "keyArea";
+    keyArea.textContent = randomWord[i];
+    keyboardArea.appendChild(keyArea);
+    keyAreas.push(keyArea);
+  }
 }
-
-// starta spelet
-
-createCardArea();
-
-// reset card area
 
 function resetCardArea() {
   keyAreas.forEach(function (keyArea) {
@@ -281,30 +271,42 @@ function resetCardArea() {
   });
   keyAreas = [];
   tries = 0;
+  wordArray.pop()
+  startButton.style.display = "none"
+  guessedLettersArray = []
+  wrongGuesses = []
+  about.textContent = "Press any key to start!"
+  guessedLetters.textContent = " ";
+  for (let part of hangmanArray) {
+    part.style.display = "none";
+  }
 }
 
-// visar/uppdaterar gissade bokstäver
+// starta spelet
+createCardArea();
 
+
+let gameOver = false;
 // eventlistener keypress
-
 document.addEventListener("keypress", function (event) {
   //const key = event.key;
   let matchFound = false;
-  guessedLettersArray.push(event.key);
-  //För rätt
-  for (let i = 0; i < keyAreas.length; i++) {
+  
+  //kontrollera om spelet inte är över
+  if (gameOver == false){
+
+    guessedLettersArray.push(event.key);
+    for (let i = 0; i < keyAreas.length; i++) {
     if (event.key == keyAreas[i].textContent) {
       matchFound = true;
       keyAreas[i].style.color = "black";
     }
   }
+  }
+
   if (!matchFound && tries < 6) {
-    // console.log("den hittades inte!");
-
     wrongGuesses.push(event.key);
-
     // console.log(wrongGuesses);
-
     guessedLetters.textContent = wrongGuesses;
 
     hangmanArray[tries].style.display = "block";
@@ -313,9 +315,11 @@ document.addEventListener("keypress", function (event) {
   if (tries == 6) {
     about.textContent = "sorry, game over";
     startButton.style.display = "block";
+    gameOver = true
   }
 });
 
 startButton.addEventListener("click", () => {
   resetCardArea();
+  createCardArea();
 });
