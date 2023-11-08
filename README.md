@@ -1,16 +1,20 @@
 # HANGMAN
 
-## Play our game
+## Play our game :space_invader:
 
 https://annathunberg.github.io/hangman/
 
 # contributors
 
-- Mara Benevides
-- Tobias Andersson
-- Anna Thunberg [annatbg](https://github.com/annatbg)
+- Mara Benevides :space_invader: [marafabiana](https://github.com/marafabiana)
+- Tobias Andersson :space_invader: [Tobiasa123](https://github.com/Tobiasa123)
+- Anna Thunberg :space_invader: [annatbg](https://github.com/annatbg)
 
 # Requirements
+
+[!IMPORTANT]
+
+- [ ] Vettiga namn på variabler och funktioner på engelska.
 
 - [x] Användaren ska kunna mata in med tangentbordet bokstäver
 
@@ -25,5 +29,3 @@ https://annathunberg.github.io/hangman/
 - [x] Du ska enbart kunna gissa på en bokstav i taget.
 
 - [x] Ordet får inte vara hårdkodat i Javascript-filen när den ska jämföras. Förslagsvis kan ordet slumpas från en array med ord.
-
-- [ ] Vettiga namn på variabler och funktioner på engelska.
