@@ -1,6 +1,6 @@
-# HANGMAN
+# :space_invader: HANGMAN :space_invader:
 
-## Play our game :space_invader:
+## Play our game
 
 https://annathunberg.github.io/hangman/
 
