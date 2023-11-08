@@ -1,10 +1,10 @@
 # :space_invader: HANGMAN :space_invader:
 
-## Play our game
+## Play the game
 
 https://annathunberg.github.io/hangman/
 
-## contributors
+## Contributors
 
 - Mara Benevides :alien: [marafabiana](https://github.com/marafabiana)
 - Tobias Andersson :robot: [Tobiasa123](https://github.com/Tobiasa123)
@@ -12,18 +12,18 @@ https://annathunberg.github.io/hangman/
 
 ## Requirements
 
-- [ ] :bangbang: Vettiga namn på variabler och funktioner på engelska.
+- [ ] Sensible names of variables and functions in English.
 
-- [x] Användaren ska kunna mata in med tangentbordet bokstäver
+- [x] The user must be able to enter letters with the keyboard
 
-- [x] Användaren ska kunna se vilka bokstäver den gissar rätt på och var i ordet de hamnar
+- [x] The user should be able to see which letters it guesses correctly and where in the word they end up
 
-- [x] Vid varje fel ska en del av gubben visas
+- [x] At each error, a part of the hanged man should be shown
 
-- [x] Ifall användaren gissar på rätt ord så ska en ”Du vann”-skärm visas med en fråga om man vill spela igen,
+- [x] If the user guesses the correct word, a "You won" screen should appear with a question asking if they want to play again
 
-- [x] Ifall användaren inte hinner gissa rätt ska en ”Du förlorade”-skärm visas med det rätta ordet och en fråga om man vill spela igen.
+- [x] If the user does not manage to guess correctly, a "You lost" screen should be displayed with the correct word and a question if they want to play again.
 
-- [x] Du ska enbart kunna gissa på en bokstav i taget.
+- [x] The user may only guess one letter at a time.
 
-- [x] Ordet får inte vara hårdkodat i Javascript-filen när den ska jämföras. Förslagsvis kan ordet slumpas från en array med ord.
+- [x] The word must not be hard-coded in the Javascript file when it is to be compared. For example, the word can be randomized from an array of words.
