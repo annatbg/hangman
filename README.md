@@ -8,7 +8,7 @@ https://annathunberg.github.io/hangman/
 
 - Mara Benevides
 - Tobias Andersson
-- Anna Thunberg (https://github.com/annatbg)
+- Anna Thunberg [annatbg](https://github.com/annatbg)
 
 # Requirements
 
