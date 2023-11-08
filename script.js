@@ -1,5 +1,22 @@
-// variabler och arrayer
+// VARIABLER & ARRAYER
+
+// html element
+let gameWrapper = document.querySelector(".gameWrapper");
+let keyboardArea = document.querySelector(".keyboardArea");
+let startButton = document.querySelector(".startButton");
+let guessedLetters = document.querySelector(".guessedLetters");
 let about = document.querySelector(".about");
+
+//svg gubbe
+let hangmanFull = document.querySelector(".fullImage");
+let hangmanGround = document.querySelector("#ground");
+let hangmanScaffold = document.querySelector("#scaffold");
+let hangmanHead = document.querySelector("#head");
+let hangmanBody = document.querySelector("#body");
+let hangmanArms = document.querySelector("#arms");
+let hangmanLegs = document.querySelector("#legs");
+
+//arrayer m.m.
 let wordArray = [
   "abruptly",
   "absurd",
@@ -215,26 +232,12 @@ let wordArray = [
   "zodiac",
   "zombie",
 ];
-
 let randomWord = getRandomWord();
-let gameWrapper = document.querySelector(".gameWrapper");
-let keyboardArea = document.querySelector(".keyboardArea");
-let startButton = document.querySelector(".startButton");
-let guessedLetters = document.querySelector(".guessedLetters");
 let wrongGuesses = [];
 let keyArea;
 let keyAreas = [];
 let guessedLettersArray = [];
 let tries = 0;
-
-let hangmanFull = document.querySelector(".fullImage");
-let hangmanGround = document.querySelector("#ground");
-let hangmanScaffold = document.querySelector("#scaffold");
-let hangmanHead = document.querySelector("#head");
-let hangmanBody = document.querySelector("#body");
-let hangmanArms = document.querySelector("#arms");
-let hangmanLegs = document.querySelector("#legs");
-
 let hangmanArray = [
   hangmanGround,
   hangmanScaffold,
@@ -248,8 +251,9 @@ for (let part of hangmanArray) {
   part.style.display = "none";
 }
 
-// funktioner
+// FUNKTIONER
 
+// slumpar fram ett ord med hjälp av random index
 function getRandomWord() {
   let randomIndex = Math.floor(Math.random() * wordArray.length);
   return wordArray[randomIndex];
@@ -257,7 +261,6 @@ function getRandomWord() {
 console.log(randomWord);
 
 // create card area
-
 function createCardArea() {}
 for (let i = 0; i < randomWord.length; i++) {
   keyArea = document.createElement("div");
@@ -269,12 +272,10 @@ for (let i = 0; i < randomWord.length; i++) {
   keyAreas.push(keyArea);
 }
 
-// starta spelet
-
+// startar spelet:
 createCardArea();
 
 // reset card area
-
 function resetCardArea() {
   keyAreas.forEach(function (keyArea) {
     keyboardArea.removeChild(keyArea);
@@ -283,27 +284,21 @@ function resetCardArea() {
   tries = 0;
 }
 
-// visar/uppdaterar gissade bokstäver
-
 // eventlistener keypress
-
 document.addEventListener("keypress", function (event) {
-  //const key = event.key;
   let matchFound = false;
   guessedLettersArray.push(event.key);
-  //För rätt
+  // om användaren tryckt på en key som matchar bokstav i keyareas, och matchfound är true, blir texten på bokstaven svart.
   for (let i = 0; i < keyAreas.length; i++) {
     if (event.key == keyAreas[i].textContent) {
       matchFound = true;
       keyAreas[i].style.color = "black";
     }
   }
+  // om användaren tryckt på en key som inte finns i keyareas, och har tryckt färre än 6 gånger pushas key till html-elementet wrongguesses, och läggs till som textcontent. hangmanarray (gubben) visas som block en child i taget.
   if (!matchFound && tries < 6) {
-    // console.log("den hittades inte!");
-
+    // console.log("not a match");
     wrongGuesses.push(event.key);
-
-    // console.log(wrongGuesses);
 
     guessedLetters.textContent = wrongGuesses;
 
