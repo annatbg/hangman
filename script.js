@@ -1,4 +1,5 @@
 // variabler och arrayer
+
 let about = document.querySelector(".about");
 let wordArray = [
   "pirat",
@@ -61,6 +62,7 @@ function createCardArea() {
     keyboardArea.appendChild(keyArea);
     keyAreas.push(keyArea);
   }
+  console.log(randomWord);
 }
 
 function resetCardArea() {
@@ -88,8 +90,6 @@ createCardArea();
 let gameOver = false;
 // eventlistener keypress
 document.addEventListener("keypress", function (event) {
-  //const key = event.key;
-  // let matchFound = false;
   //kontrollera om spelet inte är över
   if (!guessedLettersArray.includes(event.key) && gameOver == false) {
     //pusha bokstaven till arrayen
@@ -104,8 +104,11 @@ document.addEventListener("keypress", function (event) {
         keyAreas[i].style.color = "black";
         counter++;
         matchFound = true;
-
+        // text styling i about-div
         about.textContent = `Den fanns!`;
+        about.style.fontSize = "3rem";
+        about.style.fontWeight = "600";
+        about.style.fontFamily = "VT323";
         console.log("counter:", counter);
       }
     }
@@ -116,20 +119,18 @@ document.addEventListener("keypress", function (event) {
       wrongGuesses.push(event.key);
       hangmanArray[tries - 1].style.display = "block";
       about.textContent = ``;
-
       guessedLetters.textContent = `"${wrongGuesses}" finns inte! försök ${tries}/6`;
-
       console.log("Tries:", tries);
     }
 
     //kontrollera om spelet är vunnet
     if (counter == keyAreas.length) {
       gameOver = true;
+      let wholeWord = keyAreas.map((area) => area.textContent).join("");
       console.log("Du vann! spela igen?");
-      about.textContent = "Du vann! spela igen?";
+      about.textContent = "";
       //visa knapparna
-      popupText.textContent = `Du vann! spela igen?`;
-
+      popupText.textContent = `Du vann! :) Ordet var: "${wholeWord}"! Spela igen?`;
       popupContainer.style.display = "flex";
       startButton.style.display = "block";
     }
@@ -139,19 +140,19 @@ document.addEventListener("keypress", function (event) {
         part.style.display = "block";
       }
       console.log("Du förlorade... spela igen?");
-
       gameOver = true;
 
       //säg vad det hela ordet är
       let wholeWord = keyAreas.map((area) => area.textContent).join("");
-      about.textContent = `Ordet var: "${wholeWord}"! Du förlorade, spela igen?`;
-      popupText.textContent = `Ordet var: "${wholeWord}"! Du förlorade, spela igen?`;
+      about.textContent = "";
+      popupText.textContent = `Du förlorade :( Ordet var: "${wholeWord}"! Spela igen?`;
       //visa restart knapp
       startButton.style.display = "block";
       popupContainer.style.display = "flex";
     }
   } else if (guessedLettersArray.includes(event.key)) {
-    about.style.fontSize = "2rem";
+    // text styling i about-div
+    about.style.fontSize = "3rem";
     about.style.fontWeight = "600";
     about.style.fontFamily = "VT323";
     about.textContent = `du har redan gissat på ${event.key}`;
@@ -159,6 +160,7 @@ document.addEventListener("keypress", function (event) {
   }
 });
 
+// starta om spelet med start-button
 startButton.addEventListener("click", () => {
   resetCardArea();
   createCardArea();
