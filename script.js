@@ -296,24 +296,26 @@ function resetCardArea() {
 
 // visar/uppdaterar gissade bokstäver
 
+let gameOver = false;
 // eventlistener keypress
 document.addEventListener("keypress", function (event) {
+  //const key = event.key;
   let matchFound = false;
-  guessedLettersArray.push(event.key);
-  //För rätt
-  for (let i = 0; i < keyAreas.length; i++) {
-    if (event.key == keyAreas[i].textContent) {
-      matchFound = true;
-      keyAreas[i].style.color = "black";
+
+  //kontrollera om spelet inte är över
+  if (gameOver == false) {
+    guessedLettersArray.push(event.key);
+    for (let i = 0; i < keyAreas.length; i++) {
+      if (event.key == keyAreas[i].textContent) {
+        matchFound = true;
+        keyAreas[i].style.color = "black";
+      }
     }
   }
+
   if (!matchFound && tries < 6) {
-    // console.log("den hittades inte!");
-
     wrongGuesses.push(event.key);
-
     // console.log(wrongGuesses);
-
     guessedLetters.textContent = wrongGuesses;
 
     hangmanArray[tries].style.display = "block";
