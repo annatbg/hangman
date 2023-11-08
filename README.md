@@ -4,17 +4,15 @@
 
 https://annathunberg.github.io/hangman/
 
-# contributors
+## contributors
 
-- Mara Benevides :space_invader: [marafabiana](https://github.com/marafabiana)
-- Tobias Andersson :space_invader: [Tobiasa123](https://github.com/Tobiasa123)
-- Anna Thunberg :space_invader: [annatbg](https://github.com/annatbg)
+- Mara Benevides :alien: [marafabiana](https://github.com/marafabiana)
+- Tobias Andersson :robot: [Tobiasa123](https://github.com/Tobiasa123)
+- Anna Thunberg :ghost: [annatbg](https://github.com/annatbg)
 
-# Requirements
+## Requirements
 
-[!IMPORTANT]
-
-- [ ] Vettiga namn på variabler och funktioner på engelska.
+- [ ] :bangbang: Vettiga namn på variabler och funktioner på engelska.
 
 - [x] Användaren ska kunna mata in med tangentbordet bokstäver
 
