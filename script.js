@@ -251,16 +251,15 @@ for (let part of hangmanArray) {
   part.style.display = "none";
 }
 
-// FUNKTIONER
+// funktioner
 
-// slumpar fram ett ord med hjälp av random index
 function getRandomWord() {
   let randomIndex = Math.floor(Math.random() * wordArray.length);
   return wordArray[randomIndex];
 }
-console.log(randomWord);
 
 // create card area
+
 function createCardArea() {}
 for (let i = 0; i < randomWord.length; i++) {
   keyArea = document.createElement("div");
@@ -272,33 +271,48 @@ for (let i = 0; i < randomWord.length; i++) {
   keyAreas.push(keyArea);
 }
 
-// startar spelet:
+// starta spelet
+
 createCardArea();
 
 // reset card area
+
 function resetCardArea() {
   keyAreas.forEach(function (keyArea) {
     keyboardArea.removeChild(keyArea);
   });
   keyAreas = [];
   tries = 0;
+  wordArray.pop();
+  startButton.style.display = "none";
+  guessedLettersArray = [];
+  wrongGuesses = [];
+  about.textContent = "Press any key to start!";
+  guessedLetters.textContent = " ";
+  for (let part of hangmanArray) {
+    part.style.display = "none";
+  }
 }
+
+// visar/uppdaterar gissade bokstäver
 
 // eventlistener keypress
 document.addEventListener("keypress", function (event) {
   let matchFound = false;
   guessedLettersArray.push(event.key);
-  // om användaren tryckt på en key som matchar bokstav i keyareas, och matchfound är true, blir texten på bokstaven svart.
+  //För rätt
   for (let i = 0; i < keyAreas.length; i++) {
     if (event.key == keyAreas[i].textContent) {
       matchFound = true;
       keyAreas[i].style.color = "black";
     }
   }
-  // om användaren tryckt på en key som inte finns i keyareas, och har tryckt färre än 6 gånger pushas key till html-elementet wrongguesses, och läggs till som textcontent. hangmanarray (gubben) visas som block en child i taget.
   if (!matchFound && tries < 6) {
-    // console.log("not a match");
+    // console.log("den hittades inte!");
+
     wrongGuesses.push(event.key);
+
+    // console.log(wrongGuesses);
 
     guessedLetters.textContent = wrongGuesses;
 
@@ -308,9 +322,11 @@ document.addEventListener("keypress", function (event) {
   if (tries == 6) {
     about.textContent = "sorry, game over";
     startButton.style.display = "block";
+    gameOver = true;
   }
 });
 
 startButton.addEventListener("click", () => {
   resetCardArea();
+  createCardArea();
 });
