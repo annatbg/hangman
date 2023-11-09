@@ -81,10 +81,9 @@ body {
   transition: 0.5s;
 }
 svg {
-  padding: 2rem;
   background-color: #cdf7f6;
   border-radius: 1rem;
-  margin: 2rem;
+  height: 25rem;
 }
 
 h2 {
