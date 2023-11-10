@@ -1,17 +1,7 @@
 // variabler och arrayer
 
 let about = document.querySelector(".about");
-let wordArray = [
-  "pirat",
-  "hatt",
-  "mössor",
-  "katten",
-  "höna",
-  "blommor",
-  "skepp",
-  "sjöfart",
-  "hav",
-];
+let wordArray = ["pirat","hatt","mössa","katten","höna","blommor","skepp","sjöfart","hav","bil","retro"];
 let counter = 0;
 let randomWord = getRandomWord();
 let gameWrapper = document.querySelector(".gameWrapper");
@@ -34,14 +24,7 @@ let hangmanBody = document.querySelector("#body");
 let hangmanArms = document.querySelector("#arms");
 let hangmanLegs = document.querySelector("#legs");
 
-let hangmanArray = [
-  hangmanGround,
-  hangmanScaffold,
-  hangmanHead,
-  hangmanBody,
-  hangmanArms,
-  hangmanLegs,
-];
+let hangmanArray = [hangmanGround,hangmanScaffold,hangmanHead,hangmanBody,hangmanArms,hangmanLegs];
 
 for (let part of hangmanArray) {
   part.style.display = "none";
@@ -78,7 +61,7 @@ function resetCardArea() {
   wrongGuesses = [];
   guessedLetters.textContent = "";
   popupContainer.style.display = "none";
-  about.textContent = "Press any key to start!";
+  about.textContent = "Press any key to start! Lang:[SWE]";
   for (let part of hangmanArray) {
     part.style.display = "none";
   }
@@ -150,7 +133,7 @@ document.addEventListener("keypress", function (event) {
       startButton.style.display = "block";
       popupContainer.style.display = "flex";
     }
-  } else if (guessedLettersArray.includes(event.key)) {
+  } else if (guessedLettersArray.includes(event.key) && gameOver == false) {
     // text styling i about-div
     about.style.fontSize = "3rem";
     about.style.fontWeight = "600";
