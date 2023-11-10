@@ -92,6 +92,17 @@ svg{
   /*margin: 1rem;*/
   font-size: 3rem;
   text-align: center;
+  animation: pulse linear 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
 }
 
 .wrong-h2 {

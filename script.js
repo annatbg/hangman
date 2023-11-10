@@ -15,6 +15,7 @@ let guessedLettersArray = [];
 let tries = 0;
 let popupContainer = document.querySelector(".popup-container");
 let popupText = document.querySelector(".popup-text");
+let aboutH2Animation = document.querySelector(".about h2")
 
 let hangmanFull = document.querySelector(".fullImage");
 let hangmanGround = document.querySelector("#ground");
@@ -61,7 +62,7 @@ function resetCardArea() {
   wrongGuesses = [];
   guessedLetters.textContent = "";
   popupContainer.style.display = "none";
-  about.textContent = "Press any key to start! Lang:[SWE]";
+  about.appendChild(aboutH2Animation);
   for (let part of hangmanArray) {
     part.style.display = "none";
   }
