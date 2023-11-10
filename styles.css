@@ -27,6 +27,12 @@ body {
   justify-content: center;
   /*justify-content: center;*/
 }
+.headingText{
+  font-size: 10rem;
+  font-family:fantasy;
+  padding: 5rem;
+  color: #052f5f;
+}
 
 .keyboardArea {
   height: 8rem;

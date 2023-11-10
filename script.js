@@ -16,8 +16,9 @@ let tries = 0;
 let popupContainer = document.querySelector(".popup-container");
 let popupText = document.querySelector(".popup-text");
 let aboutH2Animation = document.querySelector(".about h2")
+let headingText = document.querySelector(".headingText")
 
-let hangmanFull = document.querySelector(".fullImage");
+let hangmanContainer = document.querySelector(".hangman-img")
 let hangmanGround = document.querySelector("#ground");
 let hangmanScaffold = document.querySelector("#scaffold");
 let hangmanHead = document.querySelector("#head");
@@ -30,6 +31,7 @@ let hangmanArray = [hangmanGround,hangmanScaffold,hangmanHead,hangmanBody,hangma
 for (let part of hangmanArray) {
   part.style.display = "none";
 }
+hangmanContainer.style.display = "none"
 
 // funktioner
 function getRandomWord() {
@@ -46,6 +48,7 @@ function createCardArea() {
     keyboardArea.appendChild(keyArea);
     keyAreas.push(keyArea);
   }
+  headingText.style.display = "block"
   console.log(randomWord);
 }
 
@@ -63,6 +66,8 @@ function resetCardArea() {
   guessedLetters.textContent = "";
   popupContainer.style.display = "none";
   about.appendChild(aboutH2Animation);
+  hangmanContainer.style.display = "none"
+  gameOver = false;
   for (let part of hangmanArray) {
     part.style.display = "none";
   }
@@ -76,6 +81,8 @@ let gameOver = false;
 document.addEventListener("keypress", function (event) {
   //kontrollera om spelet inte är över
   if (!guessedLettersArray.includes(event.key) && gameOver == false) {
+    headingText.style.display = "none"
+    hangmanContainer.style.display = "block"
     //pusha bokstaven till arrayen
     guessedLettersArray.push(event.key);
 
@@ -133,6 +140,8 @@ document.addEventListener("keypress", function (event) {
       //visa restart knapp
       startButton.style.display = "block";
       popupContainer.style.display = "flex";
+
+      hangmanContainer.style.display = "block"
     }
   } else if (guessedLettersArray.includes(event.key) && gameOver == false) {
     // text styling i about-div
@@ -148,5 +157,4 @@ document.addEventListener("keypress", function (event) {
 startButton.addEventListener("click", () => {
   resetCardArea();
   createCardArea();
-  gameOver = false;
 });
