@@ -2,7 +2,7 @@
 
 ## Play the game
 
-https://annathunberg.github.io/hangman/
+https://annatbg.github.io/hangman/
 
 ## Contributors
 
